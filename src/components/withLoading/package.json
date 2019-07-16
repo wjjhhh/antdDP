@@ -1,0 +1,6 @@
+{
+  "name": "WithLoading",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./withLoading.js"
+}
