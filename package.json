@@ -1,11 +1,13 @@
 {
   "name": "antdDP",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "antd第三方组件",
   "main": "index.js",
   "author": "wjj",
   "email": "378650926@qq.com",
-  "keyword": ["antd"],
+  "keyword": [
+    "antd"
+  ],
   "repository": {
     "url": "https://github.com/wjjhhh/antdDP.git"
   },
@@ -21,6 +23,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.0.0",
+    "happypack": "^5.0.1",
     "html-webpack-plugin": "^3.2.0",
     "less-loader": "^5.0.0",
     "postcss-loader": "^3.0.0",

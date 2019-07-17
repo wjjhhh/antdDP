@@ -2,6 +2,9 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HappyPack = require('happypack')
+const os = require('os')
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 module.exports = {
   entry: './src',
@@ -17,22 +20,12 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: { 
-            presets: [
-              "@babel/preset-env",
-              "@babel/preset-react",
-            ],
-            plugins: [
-              "@babel/plugin-proposal-class-properties",
-              ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
-            ],
-          }
+          loader: 'happypack/loader?id=happyBabel',
         }
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader',{
+        use: ['style-loader', 'css-loader', {
           loader: 'postcss-loader',
           options: {
             sourceMap: true,
@@ -59,7 +52,7 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              importLoaders: 1  
+              importLoaders: 1
             }
           }
         ]
@@ -72,6 +65,25 @@ module.exports = {
     //   hash: true,
     // }),
     new CleanWebpackPlugin(),
+    new HappyPack({
+      id: 'happyBabel',
+      loaders: [{
+        path: 'babel-loader',
+        cache: true,
+        query: {
+          presets: [
+            "@babel/preset-env",
+            "@babel/preset-react",
+          ],
+          plugins: [
+            "@babel/plugin-proposal-class-properties",
+            ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+          ],
+        }
+      }],
+     // 共享进程池
+     threadPool: happyThreadPool,
+    })
   ],
   devServer: {
     port: 3100,
@@ -83,6 +95,12 @@ module.exports = {
       '@utils': path.join(__dirname, 'src/utils'),
     },
     extensions: ['.js', '.jsx', '.json', '.css', '.less']
-  }
-
+  },
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'antd': 'antd',
+    'lodash': 'lodash',
+    'moment': 'moment',
+  },
 }
