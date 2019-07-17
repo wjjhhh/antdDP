@@ -1,13 +1,12 @@
 {
   "name": "antdDP",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "antd第三方组件",
   "main": "index.js",
   "author": "wjj",
   "email": "378650926@qq.com",
   "keyword": ["antd"],
   "repository": {
-    "type": "git",
     "url": "https://github.com/wjjhhh/antdDP.git"
   },
   "devDependencies": {

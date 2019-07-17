@@ -30,26 +30,26 @@ module.exports = {
           }
         }
       },
-      // {
-      //   test: /\.css$/,
-      //   use: ['style-loader', 'css-loader',{
-      //     loader: 'postcss-loader',
-      //     options: {
-      //       sourceMap: true,
-      //       plugins: [
-      //         autoprefixer({
-      //           overrideBrowserslist: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 9', 'iOS >= 8', 'Android >= 4'],
-      //         })
-      //       ]
-      //     }
-      //   }],
-      //   exclude: /node_modules/,
-      // },
-      {//CSS处理
+      {
         test: /\.css$/,
-        loader: "style-loader!css-loader?modules",
+        use: ['style-loader', 'css-loader',{
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true,
+            plugins: [
+              autoprefixer({
+                overrideBrowserslist: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 9', 'iOS >= 8', 'Android >= 4'],
+              })
+            ]
+          }
+        }],
         exclude: /node_modules/,
       },
+      // {//CSS处理
+      //   test: /\.css$/,
+      //   loader: "style-loader!css-loader?modules",
+      //   exclude: /node_modules/,
+      // },
 
       {//antd样式处理
         test: /\.css$/,
