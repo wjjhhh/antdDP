@@ -4,6 +4,6 @@ import { DatePickers } from '@components'
 const { DatePickerLimit } = DatePickers
 
 ReactDOM.render(
-  <div><DatePickerLimit /></div>,
+  <div>启动成功</div>,
   document.getElementById('app')
 )

@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   entry: './src',
@@ -17,7 +18,7 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
+          options: { 
             presets: [
               "@babel/preset-env",
               "@babel/preset-react",
@@ -29,26 +30,26 @@ module.exports = {
           }
         }
       },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader',{
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true,
-            plugins: [
-              autoprefixer({
-                overrideBrowserslist: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 9', 'iOS >= 8', 'Android >= 4'],
-              })
-            ]
-          }
-        }],
-        exclude: /node_modules/,
-      },
-      // {//CSS处理
+      // {
       //   test: /\.css$/,
-      //   loader: "style-loader!css-loader?modules",
+      //   use: ['style-loader', 'css-loader',{
+      //     loader: 'postcss-loader',
+      //     options: {
+      //       sourceMap: true,
+      //       plugins: [
+      //         autoprefixer({
+      //           overrideBrowserslist: ['last 2 versions', 'Firefox ESR', '> 1%', 'ie >= 9', 'iOS >= 8', 'Android >= 4'],
+      //         })
+      //       ]
+      //     }
+      //   }],
       //   exclude: /node_modules/,
       // },
+      {//CSS处理
+        test: /\.css$/,
+        loader: "style-loader!css-loader?modules",
+        exclude: /node_modules/,
+      },
 
       {//antd样式处理
         test: /\.css$/,
@@ -58,7 +59,7 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              importLoaders: 1
+              importLoaders: 1  
             }
           }
         ]
@@ -66,11 +67,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      hash: true,
-    }),
-
+    // new HtmlWebpackPlugin({
+    //   template: './src/index.html',
+    //   hash: true,
+    // }),
+    new CleanWebpackPlugin(),
   ],
   devServer: {
     port: 3100,
