@@ -38,7 +38,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "watch": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "push": "git push && npm publish"
   },
   "license": "ISC"
 }
