@@ -7,12 +7,13 @@ const os = require('os')
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 module.exports = {
-  entry: './src',
+  entry: './src/components',
   output: {
     path: path.resolve('dist'),
     filename: '[name].js',
     libraryTarget: "umd",
-    library: "antdDP"
+    library: "antdDP",
+    libraryExport: 'default',
   },
   module: {
     rules: [
@@ -96,11 +97,11 @@ module.exports = {
     },
     extensions: ['.js', '.jsx', '.json', '.css', '.less']
   },
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-    'antd': 'antd',
-    'lodash': 'lodash',
-    'moment': 'moment',
-  },
+  // externals: {
+  //   'react': 'React',
+  //   'react-dom': 'ReactDOM',
+  //   'antd': 'antd',
+  //   'lodash': 'lodash',
+  //   'moment': 'moment',
+  // },
 }

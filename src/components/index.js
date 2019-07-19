@@ -1,7 +1,8 @@
+import React from 'react'
 import withLoading from './withLoading'
 import DatePickers from './DatePickers'
 
-export {
+export default {
   withLoading,
   DatePickers,
 }

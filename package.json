@@ -1,8 +1,8 @@
 {
   "name": "antdDP",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "antd第三方组件",
-  "main": "index.js",
+  "main": "dist/main.js",
   "author": "wjj",
   "email": "378650926@qq.com",
   "keyword": [
@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-proposa --modeel-class-properties": "^7.5.0",
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
     "antd": "^3.20.1",
@@ -38,8 +38,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "watch": "webpack --mode development --watch",
-    "build": "webpack --mode production",
-    "push": "git push && npm publish"
+    "build": "webpack --mode production"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
 }
