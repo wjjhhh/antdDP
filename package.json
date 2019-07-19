@@ -1,6 +1,6 @@
 {
   "name": "antdDP",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "antd第三方组件",
   "main": "dist/main.js",
   "author": "wjj",
@@ -38,7 +38,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "watch": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode none"
   },
   "license": "ISC",
   "dependencies": {
